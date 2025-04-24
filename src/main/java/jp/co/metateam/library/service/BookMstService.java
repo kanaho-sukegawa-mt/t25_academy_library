@@ -78,8 +78,16 @@ public boolean checkEntry(BookMstDto bookMstDto, Model model) {
         errIsbnList.add("*ISBNは13桁で入力してください");
         model.addAttribute("errIsbn",errIsbnList);
     }
+
+    // ISBNの半角数字
+    if (!bookIsbn.matches("^[0-9]+$")) {
+        errIsbnList.add("ISBNは半角数字で入力してください");
+        model.addAttribute("errIsbn", errIsbnList);
+    }
+    
     if (!errTitleList.isEmpty() || !errIsbnList.isEmpty()){
         return true;
+
     }
 
 
